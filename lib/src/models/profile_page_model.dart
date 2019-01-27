@@ -4,22 +4,15 @@ class ProfileImageModel {
   int page;
   int per_page;
   int total_pages;
-  List<ProfileModel> data;
+  List data;
 
-  ProfileImageModel(this.page, this.per_page, this.total_pages, this.data);
-  ProfileImageModel.fromJson(Map<String, dynamic> parsedJson) {
-    page = parsedJson['page'];
-    per_page = parsedJson['per_page'];
-    total_pages = parsedJson['total_pages'];
-    for(int i = 0; i < per_page; i++) {
-      var profile = parsedJson['data'][i];
-      data.add(
-        ProfileModel(
-          profile['id'], 
-          profile['first_name'], 
-          profile['last_name'], 
-          profile['avatar']
-      ));
-    }
+  ProfileImageModel({this.page, this.per_page, this.total_pages, this.data});
+  factory ProfileImageModel.fromJson(Map<String, dynamic> json) {
+    return ProfileImageModel(
+      page: json['page'],
+      per_page: json['per_page'],
+      total_pages: json['total_pages'],
+      data: json['data']
+    );
   }
 }

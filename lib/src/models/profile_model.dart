@@ -4,11 +4,13 @@ class ProfileModel {
   String last_name;
   String avatar;
 
-  ProfileModel(this.id, this.first_name, this.last_name, this.avatar);
-  ProfileModel.fromJson(Map<String, dynamic> parsedJson) {
-    id = parsedJson['id'];
-    first_name = parsedJson['first_name'];
-    last_name = parsedJson['last_name'];
-    avatar = parsedJson['avatar'];
+  ProfileModel({this.id, this.first_name, this.last_name, this.avatar});
+  factory ProfileModel.fromJson(Map<String, dynamic> json) {
+    return ProfileModel(
+      id: json['id'],
+      first_name: json['first_name'],
+      last_name: json['last_name'],
+      avatar: json['avatar'],
+    );
   }
 }
